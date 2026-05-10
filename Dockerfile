@@ -1,0 +1,18 @@
+# Use the official lightweight Python image from the Google Docker Registry.
+# https://hub.docker.com/_/python
+FROM python:3.11-slim
+
+# Allow statements and log messages to immediately appear in the Knative logs
+ENV PYTHONUNBUFFERED True
+
+# Copy local code to the container image.
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
+
+# Install production dependencies.
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Run the web service on container startup. 
+# main.py handles binding to $PORT and 0.0.0.0 because of our __main__ block.
+CMD ["python", "main.py"]
