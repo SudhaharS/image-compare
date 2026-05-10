@@ -1,0 +1,1 @@
+A Gemini-powered multimodal embedding microservice deployed on GCP Cloud Run. Designed for a Warranty Claim project to identify duplicate warranty claim images using visual similarity (vector embeddings) rather than simple file hashes.
